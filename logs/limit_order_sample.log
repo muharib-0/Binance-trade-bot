@@ -1,0 +1,197 @@
+2026-04-21T11:57:12+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building MARKET order: symbol=BTCUSDT side=BUY quantity=0.001
+2026-04-21T11:57:12+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001)
+2026-04-21T11:57:12+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building MARKET order: symbol=BTCUSDT side=BUY quantity=0.001
+2026-04-21T11:57:12+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001)
+2026-04-21T11:57:12+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building MARKET order: symbol=BTCUSDT side=BUY quantity=0.00199
+2026-04-21T11:57:12+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.00199 → rounded=0.001 (stepSize=0.001)
+2026-04-21T11:57:12+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building MARKET order: symbol=BTCUSDT side=BUY quantity=0.001
+2026-04-21T11:57:12+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001)
+2026-04-21T11:57:12+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building MARKET order: symbol=ETHUSDT side=SELL quantity=0.5
+2026-04-21T11:57:12+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.5 → rounded=0.500 (stepSize=0.001)
+2026-04-21T11:57:12+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.001 price=60000.0
+2026-04-21T11:57:12+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001) | price: raw=60000.0 → rounded=60000.00 (tickSize=0.10)
+2026-04-21T11:57:12+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.001 price=60000.0
+2026-04-21T11:57:12+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001) | price: raw=60000.0 → rounded=60000.00 (tickSize=0.10)
+2026-04-21T11:57:12+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.001 price=60000.789
+2026-04-21T11:57:12+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001) | price: raw=60000.789 → rounded=60000.70 (tickSize=0.10)
+2026-04-21T11:57:12+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.0019999 price=60000.0
+2026-04-21T11:57:12+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.0019999 → rounded=0.001 (stepSize=0.001) | price: raw=60000.0 → rounded=60000.00 (tickSize=0.10)
+2026-04-21T11:57:12+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.001 price=60000.0
+2026-04-21T11:57:12+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001) | price: raw=60000.0 → rounded=60000.00 (tickSize=0.10)
+2026-04-21T11:57:12+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.001 price=60000.0
+2026-04-21T11:57:12+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001) | price: raw=60000.0 → rounded=60000.00 (tickSize=0.10)
+2026-04-21T11:57:31+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building MARKET order: symbol=BTCUSDT side=BUY quantity=0.001
+2026-04-21T11:57:31+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001)
+2026-04-21T11:57:31+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building MARKET order: symbol=BTCUSDT side=BUY quantity=0.001
+2026-04-21T11:57:31+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001)
+2026-04-21T11:57:31+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building MARKET order: symbol=BTCUSDT side=BUY quantity=0.00199
+2026-04-21T11:57:31+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.00199 → rounded=0.001 (stepSize=0.001)
+2026-04-21T11:57:31+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building MARKET order: symbol=BTCUSDT side=BUY quantity=0.001
+2026-04-21T11:57:31+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001)
+2026-04-21T11:57:31+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building MARKET order: symbol=ETHUSDT side=SELL quantity=0.5
+2026-04-21T11:57:31+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.5 → rounded=0.500 (stepSize=0.001)
+2026-04-21T11:57:31+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.001 price=60000.0
+2026-04-21T11:57:31+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001) | price: raw=60000.0 → rounded=60000.00 (tickSize=0.10)
+2026-04-21T11:57:31+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.001 price=60000.0
+2026-04-21T11:57:31+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001) | price: raw=60000.0 → rounded=60000.00 (tickSize=0.10)
+2026-04-21T11:57:31+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.001 price=60000.789
+2026-04-21T11:57:31+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001) | price: raw=60000.789 → rounded=60000.70 (tickSize=0.10)
+2026-04-21T11:57:31+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.0019999 price=60000.0
+2026-04-21T11:57:31+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.0019999 → rounded=0.001 (stepSize=0.001) | price: raw=60000.0 → rounded=60000.00 (tickSize=0.10)
+2026-04-21T11:57:31+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.001 price=60000.0
+2026-04-21T11:57:31+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001) | price: raw=60000.0 → rounded=60000.00 (tickSize=0.10)
+2026-04-21T11:57:31+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.001 price=60000.0
+2026-04-21T11:57:31+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001) | price: raw=60000.0 → rounded=60000.00 (tickSize=0.10)
+2026-04-21T11:59:34+0530 | INFO     | bot.client                   | [ORDER REQUEST]  symbol=BTCUSDT | side=BUY | type=MARKET | quantity=0.001
+2026-04-21T11:59:34+0530 | DEBUG    | bot.client                   | [API CALL] POST /fapi/v1/order | params={'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': '0.001', 'timestamp': 1776752974121, 'recvWindow': 5000, 'signature': '[REDACTED]'}
+2026-04-21T11:59:34+0530 | INFO     | bot.client                   | [ORDER REQUEST]  symbol=BTCUSDT | side=BUY | type=MARKET | quantity=0.001
+2026-04-21T11:59:34+0530 | DEBUG    | bot.client                   | [API CALL] POST /fapi/v1/order | params={'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': '0.001', 'timestamp': 1776752974125, 'recvWindow': 5000, 'signature': '[REDACTED]'}
+2026-04-21T11:59:34+0530 | DEBUG    | bot.client                   | [EXCHANGE INFO] Fetching filters for symbol=BTCUSDT
+2026-04-21T11:59:34+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building MARKET order: symbol=BTCUSDT side=BUY quantity=0.001
+2026-04-21T11:59:34+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001)
+2026-04-21T11:59:34+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building MARKET order: symbol=BTCUSDT side=BUY quantity=0.001
+2026-04-21T11:59:34+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001)
+2026-04-21T11:59:34+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building MARKET order: symbol=BTCUSDT side=BUY quantity=0.00199
+2026-04-21T11:59:34+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.00199 → rounded=0.001 (stepSize=0.001)
+2026-04-21T11:59:34+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building MARKET order: symbol=BTCUSDT side=BUY quantity=0.001
+2026-04-21T11:59:34+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001)
+2026-04-21T11:59:34+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building MARKET order: symbol=ETHUSDT side=SELL quantity=0.5
+2026-04-21T11:59:34+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.5 → rounded=0.500 (stepSize=0.001)
+2026-04-21T11:59:34+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.001 price=60000.0
+2026-04-21T11:59:34+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001) | price: raw=60000.0 → rounded=60000.00 (tickSize=0.10)
+2026-04-21T11:59:34+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.001 price=60000.0
+2026-04-21T11:59:34+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001) | price: raw=60000.0 → rounded=60000.00 (tickSize=0.10)
+2026-04-21T11:59:34+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.001 price=60000.789
+2026-04-21T11:59:34+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001) | price: raw=60000.789 → rounded=60000.70 (tickSize=0.10)
+2026-04-21T11:59:34+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.0019999 price=60000.0
+2026-04-21T11:59:34+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.0019999 → rounded=0.001 (stepSize=0.001) | price: raw=60000.0 → rounded=60000.00 (tickSize=0.10)
+2026-04-21T11:59:34+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.001 price=60000.0
+2026-04-21T11:59:34+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001) | price: raw=60000.0 → rounded=60000.00 (tickSize=0.10)
+2026-04-21T11:59:34+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.001 price=60000.0
+2026-04-21T11:59:34+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001) | price: raw=60000.0 → rounded=60000.00 (tickSize=0.10)
+2026-04-21T12:03:31+0530 | INFO     | bot.client                   | [ORDER REQUEST]  symbol=BTCUSDT | side=BUY | type=MARKET | quantity=0.001
+2026-04-21T12:03:31+0530 | DEBUG    | bot.client                   | [API CALL] POST /fapi/v1/order | params={'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': '0.001', 'timestamp': 1776753211303, 'recvWindow': 5000, 'signature': '[REDACTED]'}
+2026-04-21T12:03:31+0530 | INFO     | bot.client                   | [ORDER REQUEST]  symbol=BTCUSDT | side=BUY | type=MARKET | quantity=0.001
+2026-04-21T12:03:31+0530 | DEBUG    | bot.client                   | [API CALL] POST /fapi/v1/order | params={'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': '0.001', 'timestamp': 1776753211306, 'recvWindow': 5000, 'signature': '[REDACTED]'}
+2026-04-21T12:03:31+0530 | DEBUG    | bot.client                   | [EXCHANGE INFO] Fetching filters for symbol=BTCUSDT
+2026-04-21T12:03:31+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building MARKET order: symbol=BTCUSDT side=BUY quantity=0.001
+2026-04-21T12:03:31+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001)
+2026-04-21T12:03:31+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building MARKET order: symbol=BTCUSDT side=BUY quantity=0.001
+2026-04-21T12:03:31+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001)
+2026-04-21T12:03:31+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building MARKET order: symbol=BTCUSDT side=BUY quantity=0.00199
+2026-04-21T12:03:31+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.00199 → rounded=0.001 (stepSize=0.001)
+2026-04-21T12:03:31+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building MARKET order: symbol=BTCUSDT side=BUY quantity=0.001
+2026-04-21T12:03:31+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001)
+2026-04-21T12:03:31+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building MARKET order: symbol=ETHUSDT side=SELL quantity=0.5
+2026-04-21T12:03:31+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.5 → rounded=0.500 (stepSize=0.001)
+2026-04-21T12:03:31+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.001 price=60000.0
+2026-04-21T12:03:31+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001) | price: raw=60000.0 → rounded=60000.00 (tickSize=0.10)
+2026-04-21T12:03:31+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.001 price=60000.0
+2026-04-21T12:03:31+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001) | price: raw=60000.0 → rounded=60000.00 (tickSize=0.10)
+2026-04-21T12:03:31+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.001 price=60000.789
+2026-04-21T12:03:31+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001) | price: raw=60000.789 → rounded=60000.70 (tickSize=0.10)
+2026-04-21T12:03:31+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.0019999 price=60000.0
+2026-04-21T12:03:31+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.0019999 → rounded=0.001 (stepSize=0.001) | price: raw=60000.0 → rounded=60000.00 (tickSize=0.10)
+2026-04-21T12:03:31+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.001 price=60000.0
+2026-04-21T12:03:31+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001) | price: raw=60000.0 → rounded=60000.00 (tickSize=0.10)
+2026-04-21T12:03:31+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.001 price=60000.0
+2026-04-21T12:03:31+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001) | price: raw=60000.0 → rounded=60000.00 (tickSize=0.10)
+2026-04-21T12:16:13+0530 | INFO     | bot.client                   | [ORDER REQUEST]  symbol=BTCUSDT | side=BUY | type=MARKET | quantity=0.001
+2026-04-21T12:16:13+0530 | DEBUG    | bot.client                   | [API CALL] POST /fapi/v1/order | params={'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': '0.001', 'timestamp': 1776753973188, 'recvWindow': 5000, 'signature': '[REDACTED]'}
+2026-04-21T12:16:13+0530 | INFO     | bot.client                   | [ORDER REQUEST]  symbol=BTCUSDT | side=BUY | type=MARKET | quantity=0.001
+2026-04-21T12:16:13+0530 | DEBUG    | bot.client                   | [API CALL] POST /fapi/v1/order | params={'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': '0.001', 'timestamp': 1776753973191, 'recvWindow': 5000, 'signature': '[REDACTED]'}
+2026-04-21T12:16:13+0530 | DEBUG    | bot.client                   | [EXCHANGE INFO] Fetching filters for symbol=BTCUSDT
+2026-04-21T12:16:13+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building MARKET order: symbol=BTCUSDT side=BUY quantity=0.001
+2026-04-21T12:16:13+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001)
+2026-04-21T12:16:13+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building MARKET order: symbol=BTCUSDT side=BUY quantity=0.001
+2026-04-21T12:16:13+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001)
+2026-04-21T12:16:13+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building MARKET order: symbol=BTCUSDT side=BUY quantity=0.00199
+2026-04-21T12:16:13+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.00199 → rounded=0.001 (stepSize=0.001)
+2026-04-21T12:16:13+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building MARKET order: symbol=BTCUSDT side=BUY quantity=0.001
+2026-04-21T12:16:13+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001)
+2026-04-21T12:16:13+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building MARKET order: symbol=ETHUSDT side=SELL quantity=0.5
+2026-04-21T12:16:13+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.5 → rounded=0.500 (stepSize=0.001)
+2026-04-21T12:16:13+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.001 price=60000.0
+2026-04-21T12:16:13+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001) | price: raw=60000.0 → rounded=60000.00 (tickSize=0.10)
+2026-04-21T12:16:13+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.001 price=60000.0
+2026-04-21T12:16:13+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001) | price: raw=60000.0 → rounded=60000.00 (tickSize=0.10)
+2026-04-21T12:16:13+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.001 price=60000.789
+2026-04-21T12:16:13+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001) | price: raw=60000.789 → rounded=60000.70 (tickSize=0.10)
+2026-04-21T12:16:13+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.0019999 price=60000.0
+2026-04-21T12:16:13+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.0019999 → rounded=0.001 (stepSize=0.001) | price: raw=60000.0 → rounded=60000.00 (tickSize=0.10)
+2026-04-21T12:16:13+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.001 price=60000.0
+2026-04-21T12:16:13+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001) | price: raw=60000.0 → rounded=60000.00 (tickSize=0.10)
+2026-04-21T12:16:13+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.001 price=60000.0
+2026-04-21T12:16:13+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001) | price: raw=60000.0 → rounded=60000.00 (tickSize=0.10)
+2026-04-21T12:20:12+0530 | INFO     | bot.client                   | [ORDER REQUEST]  symbol=BTCUSDT | side=BUY | type=MARKET | quantity=0.001
+2026-04-21T12:20:12+0530 | DEBUG    | bot.client                   | [API CALL] POST /fapi/v1/order | params={'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': '0.001', 'timestamp': 1776754212056, 'recvWindow': 5000, 'signature': '[REDACTED]'}
+2026-04-21T12:20:12+0530 | INFO     | bot.client                   | [ORDER REQUEST]  symbol=BTCUSDT | side=BUY | type=MARKET | quantity=0.001
+2026-04-21T12:20:12+0530 | DEBUG    | bot.client                   | [API CALL] POST /fapi/v1/order | params={'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': '0.001', 'timestamp': 1776754212058, 'recvWindow': 5000, 'signature': '[REDACTED]'}
+2026-04-21T12:20:12+0530 | DEBUG    | bot.client                   | [EXCHANGE INFO] Fetching filters for symbol=BTCUSDT
+2026-04-21T12:20:12+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building MARKET order: symbol=BTCUSDT side=BUY quantity=0.001
+2026-04-21T12:20:12+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001)
+2026-04-21T12:20:12+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building MARKET order: symbol=BTCUSDT side=BUY quantity=0.001
+2026-04-21T12:20:12+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001)
+2026-04-21T12:20:12+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building MARKET order: symbol=BTCUSDT side=BUY quantity=0.00199
+2026-04-21T12:20:12+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.00199 → rounded=0.001 (stepSize=0.001)
+2026-04-21T12:20:12+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building MARKET order: symbol=BTCUSDT side=BUY quantity=0.001
+2026-04-21T12:20:12+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001)
+2026-04-21T12:20:12+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building MARKET order: symbol=ETHUSDT side=SELL quantity=0.5
+2026-04-21T12:20:12+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.5 → rounded=0.500 (stepSize=0.001)
+2026-04-21T12:20:12+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.001 price=60000.0
+2026-04-21T12:20:12+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001) | price: raw=60000.0 → rounded=60000.00 (tickSize=0.10)
+2026-04-21T12:20:12+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.001 price=60000.0
+2026-04-21T12:20:12+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001) | price: raw=60000.0 → rounded=60000.00 (tickSize=0.10)
+2026-04-21T12:20:12+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.001 price=60000.789
+2026-04-21T12:20:12+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001) | price: raw=60000.789 → rounded=60000.70 (tickSize=0.10)
+2026-04-21T12:20:12+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.0019999 price=60000.0
+2026-04-21T12:20:12+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.0019999 → rounded=0.001 (stepSize=0.001) | price: raw=60000.0 → rounded=60000.00 (tickSize=0.10)
+2026-04-21T12:20:12+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.001 price=60000.0
+2026-04-21T12:20:12+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001) | price: raw=60000.0 → rounded=60000.00 (tickSize=0.10)
+2026-04-21T12:20:12+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.001 price=60000.0
+2026-04-21T12:20:12+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001) | price: raw=60000.0 → rounded=60000.00 (tickSize=0.10)
+2026-04-21T12:20:51+0530 | INFO     | bot.client                   | [ORDER REQUEST]  symbol=BTCUSDT | side=BUY | type=MARKET | quantity=0.001
+2026-04-21T12:20:51+0530 | DEBUG    | bot.client                   | [API CALL] POST /fapi/v1/order | params={'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': '0.001', 'timestamp': 1776754251971, 'recvWindow': 5000, 'signature': '[REDACTED]'}
+2026-04-21T12:20:51+0530 | INFO     | bot.client                   | [ORDER REQUEST]  symbol=BTCUSDT | side=BUY | type=MARKET | quantity=0.001
+2026-04-21T12:20:51+0530 | DEBUG    | bot.client                   | [API CALL] POST /fapi/v1/order | params={'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': '0.001', 'timestamp': 1776754251972, 'recvWindow': 5000, 'signature': '[REDACTED]'}
+2026-04-21T12:20:51+0530 | DEBUG    | bot.client                   | [EXCHANGE INFO] Fetching filters for symbol=BTCUSDT
+2026-04-21T12:20:51+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building MARKET order: symbol=BTCUSDT side=BUY quantity=0.001
+2026-04-21T12:20:51+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001)
+2026-04-21T12:20:51+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building MARKET order: symbol=BTCUSDT side=BUY quantity=0.001
+2026-04-21T12:20:51+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001)
+2026-04-21T12:20:51+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building MARKET order: symbol=BTCUSDT side=BUY quantity=0.00199
+2026-04-21T12:20:51+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.00199 → rounded=0.001 (stepSize=0.001)
+2026-04-21T12:20:51+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building MARKET order: symbol=BTCUSDT side=BUY quantity=0.001
+2026-04-21T12:20:51+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001)
+2026-04-21T12:20:51+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building MARKET order: symbol=ETHUSDT side=SELL quantity=0.5
+2026-04-21T12:20:51+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.5 → rounded=0.500 (stepSize=0.001)
+2026-04-21T12:20:51+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.001 price=60000.0
+2026-04-21T12:20:51+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001) | price: raw=60000.0 → rounded=60000.00 (tickSize=0.10)
+2026-04-21T12:20:51+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.001 price=60000.0
+2026-04-21T12:20:51+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001) | price: raw=60000.0 → rounded=60000.00 (tickSize=0.10)
+2026-04-21T12:20:51+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.001 price=60000.789
+2026-04-21T12:20:51+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001) | price: raw=60000.789 → rounded=60000.70 (tickSize=0.10)
+2026-04-21T12:20:51+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.0019999 price=60000.0
+2026-04-21T12:20:51+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.0019999 → rounded=0.001 (stepSize=0.001) | price: raw=60000.0 → rounded=60000.00 (tickSize=0.10)
+2026-04-21T12:20:51+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.001 price=60000.0
+2026-04-21T12:20:51+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001) | price: raw=60000.0 → rounded=60000.00 (tickSize=0.10)
+2026-04-21T12:20:51+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.001 price=60000.0
+2026-04-21T12:20:51+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.001 (stepSize=0.001) | price: raw=60000.0 → rounded=60000.00 (tickSize=0.10)
+2026-04-21T21:43:35+0530 | DEBUG    | bot.client                   | BinanceFuturesClient initialised. base_url=https://testnet.binancefuture.com
+2026-04-21T21:43:35+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building MARKET order: symbol=BTCUSDT side=BUY quantity=0.001
+2026-04-21T21:43:35+0530 | DEBUG    | bot.client                   | [EXCHANGE INFO] Fetching filters for symbol=BTCUSDT
+2026-04-21T21:43:36+0530 | DEBUG    | bot.client                   | [EXCHANGE INFO] symbol=BTCUSDT stepSize=0.0001 tickSize=0.10 minQty=0.0001
+2026-04-21T21:43:36+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.0010 (stepSize=0.0001)
+2026-04-21T21:43:36+0530 | INFO     | bot.client                   | [ORDER REQUEST]  symbol=BTCUSDT | side=BUY | type=MARKET | quantity=0.0010
+2026-04-21T21:43:36+0530 | DEBUG    | bot.client                   | [API CALL] POST /fapi/v1/order | params={'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': '0.0010', 'timestamp': 1776788016072, 'recvWindow': 5000, 'signature': '[REDACTED]'}
+2026-04-21T21:43:36+0530 | INFO     | bot.client                   | [ORDER RESPONSE] orderId=13058228267 | status=NEW | executedQty=0.0000 | avgPrice=0.00
+2026-04-21T21:43:36+0530 | DEBUG    | bot.client                   | [API RESPONSE] status=200 | body={'orderId': 13058228267, 'symbol': 'BTCUSDT', 'status': 'NEW', 'clientOrderId': 'TVcTd4mWwdo6DkYTjNzwrV', 'price': '0.00', 'avgPrice': '0.00', 'origQty': '0.0010', 'executedQty': '0.0000', 'cumQty': '0.0000', 'cumQuote': '0.000000', 'timeInForce': 'GTC', 'type': 'MARKET', 'reduceOnly': False, 'closePosition': False, 'side': 'BUY', 'positionSide': 'BOTH', 'stopPrice': '0.00', 'workingType': 'CONTRACT_PRICE', 'priceProtect': False, 'origType': 'MARKET', 'priceMatch': 'NONE', 'selfTradePreventionMode': 'EXPIRE_MAKER', 'goodTillDate': 0, 'updateTime': 1776788016135}
+2026-04-21T21:43:46+0530 | DEBUG    | bot.client                   | BinanceFuturesClient initialised. base_url=https://testnet.binancefuture.com
+2026-04-21T21:43:46+0530 | DEBUG    | bot.orders                   | [ORDER MANAGER] Building LIMIT order: symbol=BTCUSDT side=SELL quantity=0.001 price=150000.0
+2026-04-21T21:43:46+0530 | DEBUG    | bot.client                   | [EXCHANGE INFO] Fetching filters for symbol=BTCUSDT
+2026-04-21T21:43:47+0530 | DEBUG    | bot.client                   | [EXCHANGE INFO] symbol=BTCUSDT stepSize=0.0001 tickSize=0.10 minQty=0.0001
+2026-04-21T21:43:47+0530 | DEBUG    | bot.orders                   | [PRECISION] quantity: raw=0.001 → rounded=0.0010 (stepSize=0.0001) | price: raw=150000.0 → rounded=150000.00 (tickSize=0.10)
+2026-04-21T21:43:47+0530 | INFO     | bot.client                   | [ORDER REQUEST]  symbol=BTCUSDT | side=SELL | type=LIMIT | quantity=0.0010 | price=150000.00
+2026-04-21T21:43:47+0530 | DEBUG    | bot.client                   | [API CALL] POST /fapi/v1/order | params={'symbol': 'BTCUSDT', 'side': 'SELL', 'type': 'LIMIT', 'quantity': '0.0010', 'price': '150000.00', 'timeInForce': 'GTC', 'timestamp': 1776788027061, 'recvWindow': 5000, 'signature': '[REDACTED]'}
+2026-04-21T21:43:47+0530 | INFO     | bot.client                   | [ORDER RESPONSE] orderId=13058228800 | status=NEW | executedQty=0.0000 | avgPrice=0.00
+2026-04-21T21:43:47+0530 | DEBUG    | bot.client                   | [API RESPONSE] status=200 | body={'orderId': 13058228800, 'symbol': 'BTCUSDT', 'status': 'NEW', 'clientOrderId': 'OjNltjBhbXSJQ7BGRUhGQu', 'price': '150000.00', 'avgPrice': '0.00', 'origQty': '0.0010', 'executedQty': '0.0000', 'cumQty': '0.0000', 'cumQuote': '0.000000', 'timeInForce': 'GTC', 'type': 'LIMIT', 'reduceOnly': False, 'closePosition': False, 'side': 'SELL', 'positionSide': 'BOTH', 'stopPrice': '0.00', 'workingType': 'CONTRACT_PRICE', 'priceProtect': False, 'origType': 'LIMIT', 'priceMatch': 'NONE', 'selfTradePreventionMode': 'EXPIRE_MAKER', 'goodTillDate': 0, 'updateTime': 1776788027135}

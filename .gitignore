@@ -13,9 +13,10 @@ venv/
 env/
 .env.local
 
-# ── Log files (keep the directory, ignore the logs) ───────────────────────────
-logs/*.log
-logs/*.log.*
+# ── Log files (keep sample files, ignore live rotating log) ───────────────────
+logs/trading_bot.log
+logs/trading_bot.log.*
+!logs/*_sample.log
 
 # ── Distribution / packaging ───────────────────────────────────────────────────
 dist/
