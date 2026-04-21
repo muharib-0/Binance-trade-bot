@@ -263,3 +263,102 @@ class TestOrderManagerLimit:
         assert isinstance(result, OrderResult)
         assert result.order_id == 222
         assert result.status == "NEW"
+
+
+# ---------------------------------------------------------------------------
+# STOP_LIMIT orders
+# ---------------------------------------------------------------------------
+
+class TestStopLimitOrders:
+    """
+    Tests for place_stop_limit_order().
+    Focus: Binance type mapping, both prices rounded, required fields present.
+    """
+
+    def _make_mock_client(self, mocker, step_size="0.001", tick_size="0.10"):
+        mock_client = mocker.MagicMock()
+        mock_client.get_exchange_info.return_value = mocker.MagicMock(
+            step_size=step_size,
+            tick_size=tick_size,
+            min_qty="0.001",
+            min_price="0.10",
+        )
+        mock_client.place_order.return_value = {
+            "orderId": 333,
+            "symbol": "BTCUSDT",
+            "side": "SELL",
+            "type": "STOP",
+            "status": "NEW",
+            "origQty": "0.001",
+            "executedQty": "0",
+            "avgPrice": "0",
+            "price": "79500.00",
+            "stopPrice": "80000.00",
+            "timeInForce": "GTC",
+        }
+        return mock_client
+
+    def test_stop_limit_binance_type_is_stop(self, mocker):
+        """Binance Futures uses type='STOP' for stop-limit — NOT 'STOP_LIMIT'."""
+        mock_client = self._make_mock_client(mocker)
+        manager = OrderManager(mock_client)
+        manager.place_stop_limit_order("BTCUSDT", "SELL", 0.001, 79500.0, 80000.0)
+
+        payload = mock_client.place_order.call_args[0][0]
+        assert payload["type"] == "STOP", (
+            "Binance Futures STOP_LIMIT orders must use type='STOP', not 'STOP_LIMIT'"
+        )
+
+    def test_stop_limit_payload_contains_stop_price(self, mocker):
+        mock_client = self._make_mock_client(mocker)
+        manager = OrderManager(mock_client)
+        manager.place_stop_limit_order("BTCUSDT", "SELL", 0.001, 79500.0, 80000.0)
+
+        payload = mock_client.place_order.call_args[0][0]
+        assert "stopPrice" in payload, "stopPrice field is required for STOP orders"
+
+    def test_stop_limit_payload_contains_price_and_time_in_force(self, mocker):
+        mock_client = self._make_mock_client(mocker)
+        manager = OrderManager(mock_client)
+        manager.place_stop_limit_order("BTCUSDT", "SELL", 0.001, 79500.0, 80000.0)
+
+        payload = mock_client.place_order.call_args[0][0]
+        assert "price" in payload
+        assert payload["timeInForce"] == "GTC"
+
+    def test_stop_price_rounded_to_tick_size(self, mocker):
+        """stopPrice must be rounded to tickSize — same precision rule as limit price."""
+        mock_client = self._make_mock_client(mocker, tick_size="0.10")
+        manager = OrderManager(mock_client)
+        manager.place_stop_limit_order("BTCUSDT", "SELL", 0.001, 79500.0, 80000.777)
+
+        payload = mock_client.place_order.call_args[0][0]
+        assert payload["stopPrice"] == "80000.70"
+
+    def test_limit_price_rounded_to_tick_size(self, mocker):
+        mock_client = self._make_mock_client(mocker, tick_size="0.10")
+        manager = OrderManager(mock_client)
+        manager.place_stop_limit_order("BTCUSDT", "SELL", 0.001, 79500.789, 80000.0)
+
+        payload = mock_client.place_order.call_args[0][0]
+        assert payload["price"] == "79500.70"
+
+    def test_quantity_rounded_to_step_size(self, mocker):
+        mock_client = self._make_mock_client(mocker, step_size="0.001")
+        manager = OrderManager(mock_client)
+        manager.place_stop_limit_order("BTCUSDT", "SELL", 0.0019999, 79500.0, 80000.0)
+
+        payload = mock_client.place_order.call_args[0][0]
+        assert payload["quantity"] == "0.001"
+
+    def test_stop_limit_returns_order_result_with_stop_price(self, mocker):
+        mock_client = self._make_mock_client(mocker)
+        manager = OrderManager(mock_client)
+        result = manager.place_stop_limit_order("BTCUSDT", "SELL", 0.001, 79500.0, 80000.0)
+
+        assert isinstance(result, OrderResult)
+        assert result.order_id == 333
+        assert result.status == "NEW"
+        assert result.order_type == "STOP"
+        assert result.stop_price == "80000.00"
+        assert result.price == "79500.00"

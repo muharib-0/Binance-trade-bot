@@ -1,6 +1,6 @@
 # 🤖 Primetrade Trading Bot
 
-A production-quality Python CLI application for placing **MARKET** and **LIMIT** orders on the **Binance Futures Testnet (USDT-M)**. Built with a clean 3-layer architecture, structured logging, full input validation, and comprehensive error handling.
+A production-quality Python CLI application for placing **MARKET**, **LIMIT**, and **STOP_LIMIT** orders on the **Binance Futures Testnet (USDT-M)**. Built with a clean 3-layer architecture, structured logging, full input validation, and comprehensive error handling.
 
 ---
 
@@ -24,7 +24,7 @@ A production-quality Python CLI application for placing **MARKET** and **LIMIT**
 
 | Feature | Details |
 |---------|---------|
-| **Order Types** | MARKET and LIMIT orders |
+| **Order Types** | MARKET, LIMIT, and STOP_LIMIT orders |
 | **Sides** | BUY and SELL |
 | **Input Validation** | All fields validated before any API call; all errors shown at once |
 | **Precision Handling** | Quantity and price auto-rounded to exchange `stepSize`/`tickSize` via Decimal arithmetic |
@@ -33,7 +33,7 @@ A production-quality Python CLI application for placing **MARKET** and **LIMIT**
 | **Error Handling** | Typed exceptions for Config, Validation, API, Auth, and Network failures |
 | **Rich CLI Output** | Colour-coded tables, status indicators, and actionable error panels |
 | **Exit Codes** | `0` on success, `1` on any failure (CI/CD compatible) |
-| **Tests** | 75 unit tests, zero network calls in test suite |
+| **Tests** | 98 unit tests, zero network calls in test suite |
 
 ---
 
@@ -155,9 +155,10 @@ All configuration is loaded from `.env`. Optional overrides:
 python -m bot.cli \
   --symbol <SYMBOL> \
   --side <BUY|SELL> \
-  --type <MARKET|LIMIT> \
+  --type <MARKET|LIMIT|STOP_LIMIT> \
   --quantity <QUANTITY> \
-  [--price <PRICE>]          # Required for LIMIT orders only
+  [--price <PRICE>]          # Required for LIMIT and STOP_LIMIT orders
+  [--stop-price <PRICE>]     # Required for STOP_LIMIT orders only
 ```
 
 ---
@@ -254,15 +255,62 @@ python -m bot.cli place-order \
 
 ---
 
-### Example 3 — ETHUSDT Market SELL
+### Example 3 — Stop-Limit SELL Order (Stop Loss)
+
+Places a stop-limit order to sell 0.001 BTC if the market price drops to 80000, filing the limit order at 79500:
 
 ```bash
-python -m bot.cli place-order --symbol ETHUSDT --side SELL --type MARKET --quantity 0.01
+python -m bot.cli \
+  --symbol BTCUSDT \
+  --side SELL \
+  --type STOP_LIMIT \
+  --quantity 0.001 \
+  --stop-price 80000 \
+  --price 79500
+```
+
+**Expected output:**
+
+```
+╭─────────────────────────────────────╮
+│       📋  Order Request Summary      │
+├──────────────┬──────────────────────┤
+│ Symbol       │ BTCUSDT              │
+│ Side         │ SELL                 │
+│ Order Type   │ STOP_LIMIT           │
+│ Quantity     │ 0.001                │
+│ Stop Price   │ 80000.0  ← trigger   │
+│ Price        │ 79500.0              │
+╰──────────────┴──────────────────────╯
+
+╭──────────────────────────────────────╮
+│          ✅  Order Response           │
+├────────────────┬─────────────────────┤
+│ Order ID       │ 3995952455          │
+│ Symbol         │ BTCUSDT             │
+│ Side           │ SELL                │
+│ Type           │ STOP                │
+│ Status         │ NEW                 │   ← Resting on order book
+│ Orig Qty       │ 0.001               │
+│ Executed Qty   │ 0                   │
+│ Avg Price      │ Pending fill        │
+│ Stop Price     │ 80000.00  ← trigger │
+│ Limit Price    │ 79500.00            │
+│ Time In Force  │ GTC                 │
+╰────────────────┴─────────────────────╯
 ```
 
 ---
 
-### Example 4 — Validation Error (missing price for LIMIT)
+### Example 4 — ETHUSDT Market SELL
+
+```bash
+python -m bot.cli --symbol ETHUSDT --side SELL --type MARKET --quantity 0.01
+```
+
+---
+
+### Example 5 — Validation Error (missing price for LIMIT)
 
 ```bash
 python -m bot.cli place-order --symbol BTCUSDT --side BUY --type LIMIT --quantity 0.001
@@ -332,7 +380,7 @@ TIMESTAMP        | LEVEL    | MODULE                       | MESSAGE
 ## 🧪 Running Tests
 
 ```bash
-# Run all 75 tests
+# Run all 98 tests
 venv\Scripts\pytest.exe tests/ -v
 
 # Run a specific test file
@@ -347,16 +395,16 @@ venv\Scripts\pytest.exe tests/ --cov=bot --cov-report=term-missing
 
 ```
 ========================= test session starts =========================
-collected 75 items
+collected 98 items
 
 tests/test_client.py::TestBinanceFuturesClientSigning::...   PASSED
 ...
-tests/test_validators.py::TestValidateAll::...                PASSED
+tests/test_validators.py::TestValidateAll::...               PASSED
 
-========================= 75 passed in 0.75s ==========================
+========================= 98 passed in 0.40s ==========================
 ```
 
-> ✅ All 75 tests run entirely offline — zero real API calls in the test suite.
+> ✅ All 98 tests run entirely offline — zero real API calls in the test suite.
 
 ---
 
@@ -417,7 +465,7 @@ The application is structured in 3 clean layers:
 | Limitation | Notes |
 |------------|-------|
 | **Testnet only** | Change `BINANCE_BASE_URL` in `.env` to switch to mainnet (use with caution — real money) |
-| **MARKET and LIMIT only** | Stop-Limit, OCO, TWAP, and Grid orders are not implemented in this version |
+| **MARKET, LIMIT, STOP_LIMIT only** | OCO, TWAP, and Grid orders are not implemented in this version |
 | **No position management** | The bot places orders but does not track open positions or PnL |
 | **Single order per invocation** | Designed as a single-command tool, not a long-running daemon |
 | **No order cancellation** | Cancelling open orders must be done via the Binance Testnet UI |

@@ -17,6 +17,7 @@ from bot.validators import (
     validate_price,
     validate_quantity,
     validate_side,
+    validate_stop_price,
     validate_symbol,
 )
 
@@ -120,7 +121,18 @@ class TestValidateOrderType:
         assert validate_order_type("limit", r) == "LIMIT"
         assert r.is_valid
 
-    def test_invalid_type_stop(self):
+    def test_stop_limit_valid(self):
+        r = ValidationResult()
+        assert validate_order_type("STOP_LIMIT", r) == "STOP_LIMIT"
+        assert r.is_valid
+
+    def test_stop_limit_lowercase_normalised(self):
+        r = ValidationResult()
+        assert validate_order_type("stop_limit", r) == "STOP_LIMIT"
+        assert r.is_valid
+
+    def test_raw_stop_type_rejected(self):
+        """'STOP' (Binance internal type) should not be accepted via CLI — users use STOP_LIMIT."""
         r = ValidationResult()
         result = validate_order_type("STOP", r)
         assert result == ""
@@ -309,3 +321,116 @@ class TestValidateAll:
         assert result.symbol == "BTCUSDT"
         assert result.side == "BUY"
         assert result.order_type == "MARKET"
+
+    def test_valid_stop_limit_order(self):
+        result = validate_all(
+            symbol="BTCUSDT", side="SELL", order_type="STOP_LIMIT",
+            quantity="0.001", price=79500.0, stop_price=80000.0,
+        )
+        assert result.is_valid
+        assert result.order_type == "STOP_LIMIT"
+        assert result.price == pytest.approx(79500.0)
+        assert result.stop_price == pytest.approx(80000.0)
+        assert not result.errors
+
+    def test_stop_limit_without_price_fails(self):
+        result = validate_all(
+            symbol="BTCUSDT", side="SELL", order_type="STOP_LIMIT",
+            quantity="0.001", price=None, stop_price=80000.0,
+        )
+        assert not result.is_valid
+        assert any("--price" in e for e in result.errors)
+
+    def test_stop_limit_without_stop_price_fails(self):
+        result = validate_all(
+            symbol="BTCUSDT", side="SELL", order_type="STOP_LIMIT",
+            quantity="0.001", price=79500.0, stop_price=None,
+        )
+        assert not result.is_valid
+        assert any("--stop-price" in e for e in result.errors)
+
+    def test_stop_limit_missing_both_prices_collects_two_errors(self):
+        """Both --price and --stop-price missing should produce 2 errors in one pass."""
+        result = validate_all(
+            symbol="BTCUSDT", side="SELL", order_type="STOP_LIMIT",
+            quantity="0.001", price=None, stop_price=None,
+        )
+        assert not result.is_valid
+        price_errors = [e for e in result.errors if "--price" in e or "--stop-price" in e]
+        assert len(price_errors) == 2
+
+    def test_stop_price_ignored_for_market_warns(self):
+        result = validate_all(
+            symbol="BTCUSDT", side="BUY", order_type="MARKET",
+            quantity="0.001", price=None, stop_price=80000.0,
+        )
+        assert result.is_valid
+        assert any("ignored" in w.lower() for w in result.warnings)
+
+
+# ---------------------------------------------------------------------------
+# validate_stop_price (unit)
+# ---------------------------------------------------------------------------
+
+class TestValidateStopPrice:
+    def test_valid_stop_price_for_stop_limit(self):
+        r = ValidationResult()
+        sp = validate_stop_price(80000.0, "STOP_LIMIT", r)
+        assert sp == pytest.approx(80000.0)
+        assert r.is_valid
+
+    def test_stop_price_string_parses_correctly(self):
+        r = ValidationResult()
+        sp = validate_stop_price("58000.50", "STOP_LIMIT", r)
+        assert sp == pytest.approx(58000.50)
+
+    def test_missing_stop_price_for_stop_limit_fails(self):
+        r = ValidationResult()
+        sp = validate_stop_price(None, "STOP_LIMIT", r)
+        assert sp is None
+        assert not r.is_valid
+        assert "--stop-price" in r.errors[0]
+
+    def test_zero_stop_price_fails(self):
+        r = ValidationResult()
+        sp = validate_stop_price(0, "STOP_LIMIT", r)
+        assert sp is None
+        assert not r.is_valid
+        assert "greater than zero" in r.errors[0]
+
+    def test_negative_stop_price_fails(self):
+        r = ValidationResult()
+        sp = validate_stop_price(-500.0, "STOP_LIMIT", r)
+        assert sp is None
+        assert not r.is_valid
+
+    def test_nonnumeric_stop_price_fails(self):
+        r = ValidationResult()
+        sp = validate_stop_price("eighty-thousand", "STOP_LIMIT", r)
+        assert sp is None
+        assert not r.is_valid
+
+    def test_stop_price_not_applicable_for_market(self):
+        """stop_price provided for MARKET should warn, not error."""
+        r = ValidationResult()
+        sp = validate_stop_price(80000.0, "MARKET", r)
+        assert sp is None
+        assert r.is_valid
+        assert len(r.warnings) == 1
+        assert "ignored" in r.warnings[0].lower()
+
+    def test_stop_price_not_applicable_for_limit(self):
+        """stop_price provided for LIMIT should warn, not error."""
+        r = ValidationResult()
+        sp = validate_stop_price(80000.0, "LIMIT", r)
+        assert sp is None
+        assert r.is_valid
+        assert len(r.warnings) == 1
+
+    def test_stop_price_absent_for_market_no_warning(self):
+        """No stop_price for MARKET — no warning, no error."""
+        r = ValidationResult()
+        sp = validate_stop_price(None, "MARKET", r)
+        assert sp is None
+        assert r.is_valid
+        assert not r.warnings

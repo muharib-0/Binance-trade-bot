@@ -1,12 +1,18 @@
 """
 OrderManager — Business Logic Layer
 
-Orchestrates the full order lifecycle:
+Orchestrates the full order lifecycle for MARKET, LIMIT, and STOP_LIMIT orders:
   1. Fetch symbol exchange filters from Binance (stepSize, tickSize)
   2. Round quantity/price to the correct precision using Decimal arithmetic
-  3. Build the correct order payload (MARKET vs LIMIT differ in structure)
+  3. Build the correct order payload per order type
   4. Submit to Binance via BinanceFuturesClient
   5. Return a clean, typed OrderResult
+
+Binance Futures API order type mapping:
+  MARKET     -> type="MARKET"  (our name = Binance name)
+  LIMIT      -> type="LIMIT"   (our name = Binance name)
+  STOP_LIMIT -> type="STOP"    (Binance Futures uses STOP for stop-limit;
+                                STOP_LIMIT is a Spot-only type)
 
 This layer knows about order logic. It knows nothing about HTTP, CLI, or logging format.
 
@@ -15,6 +21,7 @@ Usage:
     manager = OrderManager(client)
     result = manager.place_market_order("BTCUSDT", "BUY", 0.001)
     result = manager.place_limit_order("BTCUSDT", "SELL", 0.001, 60000.0)
+    result = manager.place_stop_limit_order("BTCUSDT", "SELL", 0.001, 60000.0, stop_price=58000.0)
 """
 
 from __future__ import annotations
@@ -44,13 +51,14 @@ class OrderResult:
         order_id:     Unique Binance order ID.
         symbol:       Trading symbol (e.g., "BTCUSDT").
         side:         "BUY" or "SELL".
-        order_type:   "MARKET" or "LIMIT".
+        order_type:   "MARKET", "LIMIT", or "STOP" (Binance Futures name for Stop-Limit).
         status:       Order status (e.g., "NEW", "FILLED", "PARTIALLY_FILLED").
         orig_qty:     Original requested quantity (string, as returned by Binance).
         executed_qty: Quantity that has been filled so far.
-        avg_price:    Average fill price (empty string if market order not yet filled).
+        avg_price:    Average fill price (empty string if not yet filled).
         price:        Limit price (empty for MARKET orders).
-        time_in_force: "GTC" for LIMIT, "GTC" by default.
+        stop_price:   Trigger price (set for STOP orders, empty for MARKET/LIMIT).
+        time_in_force: "GTC" for LIMIT/STOP_LIMIT, empty for MARKET.
     """
     order_id: int
     symbol: str
@@ -61,6 +69,7 @@ class OrderResult:
     executed_qty: str
     avg_price: str
     price: str
+    stop_price: str
     time_in_force: str
 
     @classmethod
@@ -84,6 +93,7 @@ class OrderResult:
             executed_qty  = data.get("executedQty", "0"),
             avg_price     = data.get("avgPrice", ""),
             price         = data.get("price", ""),
+            stop_price    = data.get("stopPrice", ""),
             time_in_force = data.get("timeInForce", ""),
         )
 
@@ -231,6 +241,77 @@ class OrderManager:
             "quantity":    rounded_qty,
             "price":       rounded_price,
             "timeInForce": "GTC",   # ← Critical: required for all LIMIT orders
+        }
+
+        raw_response = self._client.place_order(payload)
+        return OrderResult.from_api_response(raw_response)
+
+    def place_stop_limit_order(
+        self,
+        symbol: str,
+        side: str,
+        quantity: float,
+        price: float,
+        stop_price: float,
+    ) -> OrderResult:
+        """
+        Place a STOP_LIMIT order on Binance Futures.
+
+        How it works:
+          1. When the market price reaches `stop_price` (the trigger),
+             Binance automatically places a LIMIT order at `price`.
+          2. The limit order then fills if the market moves through `price`.
+
+        Binance API mapping:
+          Our type "STOP_LIMIT" → Binance type "STOP"
+          (Binance Futures uses "STOP" for stop-limit orders;
+           "STOP_LIMIT" is a Spot-only type name)
+
+        Common use cases:
+          - SELL stop-limit: protect a long position (stop-loss)
+              stop_price < current_price (triggers as price drops)
+              Example: current=84000, stop_price=80000, price=79500
+          - BUY stop-limit: enter on a breakout
+              stop_price > current_price (triggers as price rises)
+              Example: current=84000, stop_price=86000, price=86500
+
+        Args:
+            symbol:     Uppercase trading symbol (e.g., "BTCUSDT").
+            side:       "BUY" or "SELL".
+            quantity:   Desired quantity (rounded to stepSize).
+            price:      Limit fill price (rounded to tickSize).
+            stop_price: Market trigger price (rounded to tickSize).
+
+        Returns:
+            OrderResult with status "NEW" (queued, awaiting trigger).
+        """
+        logger.debug(
+            "[ORDER MANAGER] Building STOP_LIMIT order: symbol=%s side=%s "
+            "quantity=%s price=%s stop_price=%s",
+            symbol, side, quantity, price, stop_price,
+        )
+
+        filters = self._client.get_exchange_info(symbol)
+        rounded_qty        = _round_to_step(quantity,   filters.step_size)
+        rounded_price      = _round_to_step(price,      filters.tick_size)
+        rounded_stop_price = _round_to_step(stop_price, filters.tick_size)
+
+        logger.debug(
+            "[PRECISION] qty: %s->%s (step=%s) | price: %s->%s (tick=%s) | "
+            "stopPrice: %s->%s (tick=%s)",
+            quantity, rounded_qty, filters.step_size,
+            price, rounded_price, filters.tick_size,
+            stop_price, rounded_stop_price, filters.tick_size,
+        )
+
+        payload = {
+            "symbol":      symbol,
+            "side":        side,
+            "type":        "STOP",                  # Binance Futures stop-limit type
+            "quantity":    rounded_qty,
+            "price":       rounded_price,            # Limit price (fills here)
+            "stopPrice":   rounded_stop_price,       # Trigger price
+            "timeInForce": "GTC",
         }
 
         raw_response = self._client.place_order(payload)

@@ -67,6 +67,7 @@ def _print_request_summary(
     order_type: str,
     quantity: float,
     price: Optional[float],
+    stop_price: Optional[float] = None,
 ) -> None:
     """Print a formatted table summarising the order before submission."""
     table = Table(
@@ -84,6 +85,8 @@ def _print_request_summary(
     table.add_row("Side",       f"[green]{side}[/green]" if side == "BUY" else f"[red]{side}[/red]")
     table.add_row("Order Type", order_type)
     table.add_row("Quantity",   str(quantity))
+    if stop_price is not None:
+        table.add_row("Stop Price",  f"[yellow]{stop_price}[/yellow]  ← trigger")
     table.add_row("Price",      f"{price}" if price is not None else "[dim]Market price[/dim]")
 
     console.print()
@@ -126,6 +129,8 @@ def _print_order_response(result: OrderResult) -> None:
     table.add_row("Orig Qty",     result.orig_qty)
     table.add_row("Executed Qty", result.executed_qty)
     table.add_row("Avg Price",    avg_price_display)
+    if result.stop_price and result.stop_price not in ("0", "0.00000000", ""):
+        table.add_row("Stop Price",   f"[yellow]{result.stop_price}[/yellow]  ← trigger")
     if result.price and result.price not in ("0", "0.00000000", ""):
         table.add_row("Limit Price",   result.price)
     if result.time_in_force:
@@ -206,12 +211,19 @@ def place_order(
     price: Optional[float] = typer.Option(
         None,
         "--price", "-p",
-        help="Limit price -- required for LIMIT orders, ignored for MARKET",
+        help="Limit price -- required for LIMIT and STOP_LIMIT orders, ignored for MARKET",
         show_default=False,
     ),
-) -> None:
+    stop_price: Optional[float] = typer.Option(
+        None,
+        "--stop-price",
+        help="Trigger price -- required for STOP_LIMIT orders only. "
+             "When market hits this price, a limit order at --price is placed.",
+        show_default=False,
+    ),
+)  -> None:
     """
-    Place a MARKET or LIMIT order on Binance Futures Testnet (USDT-M).
+    Place a MARKET, LIMIT, or STOP_LIMIT order on Binance Futures Testnet (USDT-M).
 
     \b
     Examples:
@@ -221,14 +233,18 @@ def place_order(
       Limit SELL:
         python -m bot.cli --symbol BTCUSDT --side SELL --type LIMIT --quantity 0.001 --price 60000
 
+      Stop-Limit SELL (stop-loss on a long):
+        python -m bot.cli --symbol BTCUSDT --side SELL --type STOP_LIMIT \
+          --quantity 0.001 --stop-price 80000 --price 79500
+
     \b
     Credentials:
       Set BINANCE_API_KEY and BINANCE_API_SECRET in your .env file.
       Copy .env.example to .env and fill in your testnet credentials.
     """
     logger.debug(
-        "[CLI] place-order called: symbol=%s side=%s type=%s quantity=%s price=%s",
-        symbol, side, order_type, quantity, price,
+        "[CLI] place-order called: symbol=%s side=%s type=%s quantity=%s price=%s stop_price=%s",
+        symbol, side, order_type, quantity, price, stop_price,
     )
 
     # ── Step 1: Validate all inputs ──────────────────────────────────────
@@ -238,6 +254,7 @@ def place_order(
         order_type=order_type,
         quantity=quantity,
         price=price,
+        stop_price=stop_price,
     )
 
     if not validation.is_valid:
@@ -255,6 +272,7 @@ def place_order(
         order_type = validation.order_type,
         quantity   = validation.quantity,   # type: ignore[arg-type]
         price      = validation.price,
+        stop_price = validation.stop_price,
     )
 
     # ── Step 3: Place the order ──────────────────────────────────────────
@@ -268,12 +286,20 @@ def place_order(
                 side     = validation.side,
                 quantity = validation.quantity,  # type: ignore[arg-type]
             )
-        else:  # LIMIT
+        elif validation.order_type == "LIMIT":
             result = manager.place_limit_order(
                 symbol   = validation.symbol,
                 side     = validation.side,
                 quantity = validation.quantity,  # type: ignore[arg-type]
                 price    = validation.price,     # type: ignore[arg-type]
+            )
+        else:  # STOP_LIMIT
+            result = manager.place_stop_limit_order(
+                symbol     = validation.symbol,
+                side       = validation.side,
+                quantity   = validation.quantity,   # type: ignore[arg-type]
+                price      = validation.price,      # type: ignore[arg-type]
+                stop_price = validation.stop_price,  # type: ignore[arg-type]
             )
 
     except ConfigurationError as exc:
