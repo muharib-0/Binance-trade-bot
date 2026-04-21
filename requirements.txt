@@ -1,0 +1,10 @@
+# ── Production dependencies ────────────────────────────────────────────────────
+requests==2.31.0          # HTTP client for Binance REST API calls
+python-dotenv==1.0.1      # .env file loading for API credentials
+typer==0.14.0             # CLI framework (built on Click, type-safe)
+click==8.1.8              # Pinned: Click 8.3 breaks Typer's make_metavar() on Python 3.14
+rich==13.7.1              # Terminal output: tables, panels, colours
+
+# ── Development / testing (not needed in production) ──────────────────────────
+pytest==8.2.0             # Test runner
+pytest-mock==3.14.0       # Mocking fixtures for unit tests
